@@ -16,7 +16,7 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
       <NavigationContainer>
-        <Drawer.Navigator>
+        <Drawer.Navigator initialRouteName={"Menu"}>
           <Drawer.Screen 
             name="Menu" 
             component={Index} 
