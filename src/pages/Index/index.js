@@ -1,14 +1,8 @@
 import React from 'react';
 import * as reactNative from 'react-native';
 import { useFonts } from 'expo-font';
-import { createStackNavigator } from '@react-navigation/stack';
-import Cadastro from '../Cadastro/index';
-import TelaPrincipal from '../TelaPrincipal/index';
-import { NavigationContainer } from '@react-navigation/native';
 
-export default function Index() {
-
-	const Stack = createStackNavigator();
+export default function Index({navigation}) {
 
 	const [loaded] = useFonts({
 		Poppins: require('../../../assets/fonts/Poppins-Regular.ttf'),
@@ -20,9 +14,9 @@ export default function Index() {
 	}
 
 	return (
-		<NavigationContainer style={styles.container}>
+		<reactNative.View style={styles.container}>
 			<reactNative.Text style={styles.title} adjustsFontSizeToFit={true} numberOfLines={1}>
-				Vitor<reactNative.Text style={styles.blue}>App</reactNative.Text>
+				Blackk<reactNative.Text style={styles.blue}>App</reactNative.Text>
 			</reactNative.Text>
 			<reactNative.View style={styles.inputWrapper}>
 				<reactNative.Text style={styles.label}>
@@ -39,26 +33,29 @@ export default function Index() {
 					style={styles.input}
 				/>
 				
-					<Stack.Navigator>
-						<Stack.Screen name="Login" component={TelaPrincipal}/>
-						<Stack.Screen name="Registar" component={Cadastro}/>
-					</Stack.Navigator>
-				
-				{/*<reactNative.Pressable style={styles.button}>  
-					<reactNative.Text style={styles.buttonText}>Login</reactNative.Text>
+				<reactNative.Pressable style={styles.button}>  
+					<reactNative.Text 
+						style={styles.buttonText}
+						onPress={()=> navigation.navigate('Tela Principal')}>
+							Login
+						</reactNative.Text>
 				</reactNative.Pressable>
 				<reactNative.Pressable style={styles.button2}>  
-					<reactNative.Text style={styles.buttonText}>Registrar</reactNative.Text>
-	</reactNative.Pressable>*/}
+					<reactNative.Text 
+						style={styles.buttonText} 
+						onPress={() => navigation.navigate('Registro')}>
+							Registrar
+						</reactNative.Text>
+				</reactNative.Pressable>
 			</reactNative.View>
-		</NavigationContainer>
+		</reactNative.View>
 	);
 }
 
 const styles = reactNative.StyleSheet.create({
 	container: {
 		height: '100%',
-		backgroundColor: 'white'
+		backgroundColor: '#FFFFFF'
 	},
 	title: {
 		justifyContent: 'center',
