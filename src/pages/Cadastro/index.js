@@ -4,13 +4,15 @@ import { useFonts } from 'expo-font';
 
 const Cadastro = ({navigation}) => {
 
-    const loaded = useFonts({
+    const [fontsLoaded] = useFonts({
 		Poppins: require('../../../assets/fonts/Poppins-Regular.ttf'),
 		Roboto: require('../../../assets/fonts/Roboto-Regular.ttf')
 	});
-    if(!loaded) {
-        return null
-    }
+    useEffect(() => {
+        if (fontsLoaded) {
+          // Fonts are loaded and ready
+        }
+      }, [fontsLoaded]);
     
         const [nome, setNome] = useState('');
         const [email, setEmail] = useState('');

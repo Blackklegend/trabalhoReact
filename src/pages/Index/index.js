@@ -25,7 +25,7 @@ export default function Index({navigation}) {
 				<reactNative.TextInput
 					style={styles.input}
 				/>
-				<reactNative.Text style={styles.label, styles.label2}>
+				<reactNative.Text style={[styles.label, styles.label2]}>
 					Senha
 				</reactNative.Text>
 				<reactNative.TextInput 
