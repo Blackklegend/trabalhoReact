@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as reactNative from 'react-native';
 import { useFonts } from 'expo-font';
 
 const Cadastro = ({navigation}) => {
 
-    const loaded = useFonts({
+    const [fontsLoaded] = useFonts({
 		Poppins: require('../../../assets/fonts/Poppins-Regular.ttf'),
 		Roboto: require('../../../assets/fonts/Roboto-Regular.ttf')
 	});
-    if(!loaded) {
-        return null
-    }
+    useEffect(() => {
+        if (fontsLoaded) {
+          // Fonts are loaded and ready
+        }
+      }, [fontsLoaded]);
     
         const [nome, setNome] = useState('');
         const [email, setEmail] = useState('');
@@ -69,7 +71,7 @@ const Cadastro = ({navigation}) => {
                     <reactNative.Text style={styles.buttonText}>Cadastrar</reactNative.Text>
                 </reactNative.Pressable>
             </reactNative.View>
-            { ErrorMessage && <ErrorMessageText>A senhas precisam ser a mesma</ErrorMessageText> }
+            {ErrorMessage && <reactNative.Text style={styles.errorText}>As senhas precisam ser iguais</reactNative.Text>}
         </reactNative.View>
     );
 }
@@ -110,6 +112,14 @@ const styles = reactNative.StyleSheet.create({
 		fontSize: 22,
 		fontWeight: 'bold',
 	},
+    errorText: {
+        marginTop: 12,
+        color: '#D32F2F',
+        fontFamily: 'Roboto',
+        textAlign: 'center',
+        fontSize: 14,
+        fontWeight: 'bold',
+    },
 })
 
 export default Cadastro;
